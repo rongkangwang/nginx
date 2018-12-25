@@ -1,0 +1,25 @@
+version: "3"
+services:
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8001:80"
+    volumes:
+      - /Users/kang/Documents/workspace/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    restart: always
+    depends_on:
+      - tomcat
+      - tomcat1
+
+  tomcat:
+    image: tomcat:latest
+    ports:
+      - "6004:8080"
+    restart: always
+
+  tomcat1:
+    image: tomcat:latest
+    ports:
+      - "6005:8080"
+    restart: always
